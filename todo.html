@@ -1,0 +1,50 @@
+<html>
+<head><title>todolist</title></head>
+<body style="background-color:#ffff99"> 
+	<center><h1>TODO LIST</h1></center>
+<label >input please:</label>
+<button type='button' onclick='addelem()'>Add</button>
+<input 	type='text' id='inputid'>
+<ul id='ulid'>
+</ul>
+<script>
+let id=1;
+function addelem(){
+	const newelem=document.createElement('li');
+	newelem.innerHTML=document.getElementById('inputid').value;
+	newelem.setAttribute('id',id);
+	document.getElementById('ulid').appendChild(newelem);
+	const newbutton=document.createElement('BUTTON');
+	newbutton.type='button';
+	newbutton.innerHTML='edit';
+	newbutton.setAttribute('id',id);
+	newbutton.setAttribute('onclick','editbutton(event)');
+	document.getElementById('ulid').appendChild(newbutton);
+	
+	const newbutton2=document.createElement('BUTTON');
+	newbutton2.type='button';
+	newbutton2.innerHTML='update';
+	newbutton2.setAttribute('id',id);
+	newbutton2.setAttribute('onclick','updatebutton(event)');
+	document.getElementById('ulid').appendChild(newbutton2);
+	id=id+1;
+	document.getElementById('inputid').value="";
+	
+	
+	}
+function editbutton(event){
+	id=event.target.id;
+	document.getElementById('inputid').value=document.getElementById(id).innerHTML;
+	console.log("in edit button",id);
+	//id=id+1;
+	
+	
+	}
+
+function updatebutton(event){
+	id=event.target.id;
+	document.getElementById(id).innerHTML=document.getElementById('inputid').value;
+	document.getElementById('inputid').value="";
+}
+	</script>
+</body></html>
